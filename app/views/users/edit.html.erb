@@ -1,0 +1,24 @@
+<h1>This is the edit window </h1>
+
+<div>
+<% if @user.errors.any? %>
+    <div id = "error_explanation" >
+    <h2><%= pluralize(@user.errors.count, "error") %> didn't allow the article to be saved </h2>
+    <ul>
+    <% @user.errors.full_messages. each do |msg| %>
+        <li> <%= msg %></li>
+    <% end %>
+    </ul>
+<% end %>
+</div>
+
+
+<%= form_with model: @user, method: :patch do |form|%>
+    <%= form.label :username,"User Name:" %>
+    <%= form.text_field :username%>
+    <%= form.label :email,"Email:" %>
+    <%= form.text_field :email%>
+    <%= form.label :password,"Password" %>
+    <%= form.text_field :password%>
+    <%= form.submit "Submit" %>
+<% end %>
